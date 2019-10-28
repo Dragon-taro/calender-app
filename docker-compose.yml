@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  nginx:
+    build: ./nginx/
+    ports:
+      - "8080:80"
+    volumes:
+      - "./front/public:/var/www/html"
+    networks:
+      - private-subnet
+  api:
+    build: ./server/
+    volumes:
+      - "./server:/var/www/server"
+    networks:
+      - private-subnet
+
+networks:
+  private-subnet: {}
