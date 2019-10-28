@@ -1,10 +1,10 @@
 default:
-	make fron
-	make server
+	make front/install
+	make server/install
 
-front:
+front/install:
 	npm --prefix ./front install ./front
-	npm --cwd ./front run build
+	npm --prefix ./front run build
 
-server:
+server/install:
 	npm --prefix ./server install ./server
