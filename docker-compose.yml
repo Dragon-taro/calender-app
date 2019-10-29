@@ -15,6 +15,21 @@ services:
       - "./server:/var/www/server"
     networks:
       - private-subnet
+    environment:
+      - DB_USER=user
+      - DB_NAME=calender
+      - DB_PASS=pass
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: calender
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "3306:3306"
+    networks:
+      - private-subnet
 
 networks:
   private-subnet: {}
