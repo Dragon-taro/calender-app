@@ -23,11 +23,13 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: calender
+      MYSQL_DATABASE: techpit
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
     ports:
       - "3306:3306"
+    volumes:
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
     networks:
       - private-subnet
 
