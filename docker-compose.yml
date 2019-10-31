@@ -19,17 +19,20 @@ services:
       - DB_USER=user
       - DB_NAME=calender
       - DB_PASS=pass
+      - DB_HOST=db
   db:
     image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: techpit
+      MYSQL_DATABASE: calender
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
     ports:
       - "3306:3306"
     volumes:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
+      - ./db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
     networks:
       - private-subnet
 

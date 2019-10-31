@@ -1,4 +1,4 @@
-import { Router } from "express";
+import Router from "express-promise-router";
 import ScheduleController from "../../controllers/schedule";
 import DB from "../db/handler";
 
@@ -7,6 +7,8 @@ const scheduleRouter = (db: DB) => {
   const scheduleController = new ScheduleController(db);
 
   router.get("/", scheduleController.index);
+  router.post("/", scheduleController.create);
+  router.get("/:id", scheduleController.show);
 
   return router;
 };

@@ -1,4 +1,4 @@
-import { Connection, createConnection } from "mysql";
+import { Connection, createConnection, QueryOptions } from "mysql";
 
 export default class DB {
   public con?: Connection;
@@ -12,12 +12,26 @@ export default class DB {
     } catch (err) {
       // コネクションに失敗したら1sごとに最大10回retry
       if (this.retryCount < 10) {
-        await this.sleep(1000);
+        await new Promise(resolve => setTimeout(() => resolve(), 1000));
         await this.connect();
       } else {
         throw new Error(err);
       }
     }
+  }
+
+  query<T>(query: string, values?: any): Promise<T> {
+    return new Promise((resolve, reject) => {
+      this.con!.query(query, values, (err, result) => {
+        if (err) {
+          reject(err);
+        }
+
+        const _result = result as T;
+
+        resolve(_result);
+      });
+    });
   }
 
   /**
@@ -30,7 +44,8 @@ export default class DB {
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
-        database: process.env.DB_NAME
+        database: process.env.DB_NAME,
+        charset: "utf8"
       });
 
       connection.connect(err => {
@@ -40,18 +55,6 @@ export default class DB {
 
         resolve(connection);
       });
-    });
-  }
-
-  /**
-   * promiseを使ったsleepの実装
-   * @param ms 何ミリ秒sleepするか
-   */
-  private sleep(ms: number) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve();
-      }, ms);
     });
   }
 }

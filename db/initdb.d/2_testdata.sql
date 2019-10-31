@@ -1,1 +1,0 @@
-INSERT INTO schedules (start_at, end_at, title, content) values (NOW(), (NOW() + INTERVAL 1 HOUR), "初めてのおつかい", "これは初めてのおつかいです");

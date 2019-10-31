@@ -1,15 +1,38 @@
 import ScheduleModel from "../models/schedule";
 import DB from "../infrastructure/db/handler";
-import { Dictionary, Request, Response } from "express-serve-static-core";
+import {
+  Dictionary,
+  Request as _Request,
+  Response
+} from "express-serve-static-core";
+import { Schedule } from "../entity/schedule";
+
+type Request = _Request<Dictionary<string>>;
 
 export default class ScheduleController {
-  private scedule: ScheduleModel;
+  private scheduleModel: ScheduleModel;
 
   constructor(db: DB) {
-    this.scedule = new ScheduleModel(db);
+    this.scheduleModel = new ScheduleModel(db);
   }
 
-  index(req: Request<Dictionary<string>>, res: Response) {
-    res.send("schedule!");
-  }
+  index = async (_req: Request, res: Response) => {
+    const schedules = await this.scheduleModel.findAll();
+
+    res.json(schedules);
+  };
+
+  create = async (req: Request, res: Response) => {
+    const schedule = req.body as Schedule;
+    const newSchedule = await this.scheduleModel.store(schedule);
+
+    res.send(newSchedule);
+  };
+
+  show = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    const schedule = await this.scheduleModel.find(id);
+
+    res.json(schedule);
+  };
 }
