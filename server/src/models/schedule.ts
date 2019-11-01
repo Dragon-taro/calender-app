@@ -12,6 +12,11 @@ export default class ScheduleModel extends BaseModel {
     super(db);
   }
 
+  /**
+   * `year`年`month`月の予定を取得
+   * @param month 月の指定
+   * @param year 年の指定
+   */
   async findAll(month: number, year: number) {
     const targetMonth = dayjs(`${year}-${month}-1`);
     const firstDay = targetMonth.startOf("month").toISOString();
@@ -23,6 +28,10 @@ export default class ScheduleModel extends BaseModel {
     );
   }
 
+  /**
+   * 指定されたidの予定を取得
+   * @param id 追加したいデータのid
+   */
   async find(id: number) {
     const schedules = await this.db.query<Schedule[]>(
       "select * from schedules where id = ?",
@@ -31,6 +40,10 @@ export default class ScheduleModel extends BaseModel {
     return schedules[0];
   }
 
+  /**
+   * 予定の追加
+   * @param schedule 追加したい予定のデータ
+   */
   async store(schedule: Schedule) {
     const result = await this.db.query<{ insertId: number }>(
       "insert into schedules (title, description, startAt, endAt) values (?, ?, ?, ?);",
@@ -47,6 +60,10 @@ export default class ScheduleModel extends BaseModel {
     return newSchedule;
   }
 
+  /**
+   * 指定されたidの予定を削除
+   * @param id 削除したいデータのid
+   */
   async delete(id: number) {
     await this.db.query<Schedule[]>("delete from schedules where id = ?", [id]);
 

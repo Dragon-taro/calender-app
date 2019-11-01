@@ -1,5 +1,9 @@
 import DB from "../infrastructure/db/handler";
 
+/**
+ * modelのベースとなるクラス
+ * DBインスタンスをセットする
+ */
 export default class BaseModel {
   protected db: DB;
 
