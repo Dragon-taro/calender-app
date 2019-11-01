@@ -19,7 +19,9 @@ afterAll(async () => {
 describe("schedule modelのテスト", () => {
   it("store", async () => {
     const scheduleModel = new ScheduleModel(db);
-    const result = await scheduleModel.findAll();
+    const month = 11;
+    const year = 2019;
+    const result = await scheduleModel.findAll(month, year);
 
     console.log(result);
   });

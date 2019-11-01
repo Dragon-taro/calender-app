@@ -16,8 +16,10 @@ export default class ScheduleController {
     this.scheduleModel = new ScheduleModel(db);
   }
 
-  index = async (_req: Request, res: Response) => {
-    const schedules = await this.scheduleModel.findAll();
+  index = async (req: Request, res: Response) => {
+    const year = Number(req.query.year as string);
+    const month = Number(req.query.month as string);
+    const schedules = await this.scheduleModel.findAll(month, year);
 
     res.json(schedules);
   };

@@ -28,6 +28,7 @@ services:
       MYSQL_DATABASE: calender
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
+      TZ: Asia/Tokyo
     ports:
       - "3306:3306"
     volumes:
