@@ -16,6 +16,7 @@ export default class ScheduleModel extends BaseModel {
     const targetMonth = dayjs(`${year}-${month}-1`);
     const firstDay = targetMonth.startOf("month").toISOString();
     const lastDay = targetMonth.endOf("month").toISOString();
+
     return await this.db.query<Schedule[]>(
       "select * from schedules where startAt between ? and ? or endAt between ? and ?;",
       [firstDay, lastDay, firstDay, lastDay]
@@ -44,5 +45,11 @@ export default class ScheduleModel extends BaseModel {
     const newSchedule = await this.find(result.insertId);
 
     return newSchedule;
+  }
+
+  async delete(id: number) {
+    await this.db.query<Schedule[]>("delete from schedules where id = ?", [id]);
+
+    return;
   }
 }

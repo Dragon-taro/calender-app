@@ -45,4 +45,16 @@ describe("schedule modelのテスト", () => {
 
     console.log(result);
   });
+
+  it("delete", async () => {
+    const scheduleModel = new ScheduleModel(db);
+    const month = 11;
+    const year = 2019;
+    const schedules = await scheduleModel.findAll(month, year);
+
+    const id = schedules.reverse()[0].id!;
+    const result = await scheduleModel.delete(id);
+
+    console.log(result);
+  });
 });

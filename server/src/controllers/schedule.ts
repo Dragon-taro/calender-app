@@ -37,4 +37,11 @@ export default class ScheduleController {
 
     res.json(schedule);
   };
+
+  delete = async (req: Request, res: Response) => {
+    const id = Number(req.params.id);
+    await this.scheduleModel.delete(id);
+
+    res.sendStatus(204);
+  };
 }

@@ -9,6 +9,7 @@ const scheduleRouter = (db: DB) => {
   router.get("/", scheduleController.index);
   router.post("/", scheduleController.create);
   router.get("/:id", scheduleController.show);
+  router.delete("/:id", scheduleController.delete);
 
   return router;
 };
