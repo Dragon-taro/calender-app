@@ -12,7 +12,7 @@ const port = 8000;
 
 app.use(express.json());
 
-const db = new DB();
+const db = DB.new();
 
 db.connect().then(() => {
   // health check

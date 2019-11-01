@@ -4,6 +4,23 @@ export default class DB {
   public con?: Connection;
   private retryCount: number = 0;
 
+  /**
+   * singleton（＝一回だけしかインスタンスを生成できない）
+   */
+  private static db?: DB;
+  private constructor() {}
+
+  static new() {
+    if (!this.db) {
+      return new DB();
+    }
+
+    throw new Error("DB instance has already exited.");
+  }
+
+  /**
+   * DBへの接続を行う
+   */
   async connect() {
     this.retryCount++;
 
@@ -20,6 +37,11 @@ export default class DB {
     }
   }
 
+  /**
+   * `mysql.query`をpromiseで扱えるようにラップしたもの
+   * @param query SQLクエリ
+   * @param values SQLのplaceholderを与える配列
+   */
   query<T>(query: string, values?: any): Promise<T> {
     return new Promise((resolve, reject) => {
       this.con!.query(query, values, (err, result) => {

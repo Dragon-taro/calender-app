@@ -5,7 +5,7 @@ process.env.DB_USER = "user";
 process.env.DB_NAME = "calender";
 process.env.DB_PASS = "pass";
 
-const db = new DB();
+const db = DB.new();
 
 beforeAll(async () => {
   await db.connect();
