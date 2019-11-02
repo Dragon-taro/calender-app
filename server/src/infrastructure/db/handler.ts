@@ -10,12 +10,12 @@ export default class DB {
   private static db?: DB;
   private constructor() {}
 
-  static new() {
+  static get instance() {
     if (!this.db) {
-      return new DB();
+      this.db = new DB();
     }
 
-    throw new Error("DB instance has already exited.");
+    return this.db;
   }
 
   /**
