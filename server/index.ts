@@ -1,8 +1,25 @@
 import express from "express";
+import dotenv from "dotenv";
+
+import scheduleRouter from "./src/infrastructure/routers/schedule";
+import DB from "./src/infrastructure/db/handler";
+
+dotenv.config();
 
 const app = express();
-const port = 8080;
+const port = 8000;
 
-app.get("/api/hc", (req, res) => res.send("ok!"));
+app.use(express.json());
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const db = DB.instance;
+
+db.connect().then(() => {
+  // health check
+  app.get("/api/hc", (_req, res) => res.send("ok!"));
+
+  // routing
+  app.use("/api/schedules", scheduleRouter(db));
+
+  // 起動
+  app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+});
