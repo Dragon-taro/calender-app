@@ -1,11 +1,10 @@
 import express from "express";
+import dotenv from "dotenv";
+
 import scheduleRouter from "./src/infrastructure/routers/schedule";
 import DB from "./src/infrastructure/db/handler";
 
-// 環境変数のセット（ほんとはdotenvに書きたい）
-process.env.DB_USER = "user";
-process.env.DB_NAME = "calender";
-process.env.DB_PASS = "pass";
+dotenv.config();
 
 const app = express();
 const port = 8000;

@@ -8,3 +8,4 @@ front/install:
 
 server/install:
 	npm --prefix ./server install ./server
+	cp ./server/env/env-local ./server/.env
