@@ -14,6 +14,7 @@ $ make
 $ npm --prefix ./front install ./front
 $ npm --cwd ./front run build
 $ npm --prefix ./server install ./server
+$ cp ./server/env/env-local ./server/.env
 ```
 
 の 3 つのコマンドを実行してください。
