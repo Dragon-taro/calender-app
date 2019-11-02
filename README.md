@@ -17,7 +17,7 @@ $ npm --prefix ./server install ./server
 $ cp ./server/env/env-local ./server/.env
 ```
 
-の 3 つのコマンドを実行してください。
+の 4 つのコマンドを実行してください。
 
 ## サーバーの起動と停止
 
