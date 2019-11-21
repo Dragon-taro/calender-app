@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import CounterContainer from "./src/components/Counter/container";
+import Counter from "./components/Counter/container";
 
-const App = () => <CounterContainer />;
+const App = () => <Counter />;
 
 ReactDOM.render(<App />, document.getElementById("root"));
