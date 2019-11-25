@@ -10,6 +10,7 @@ const scheduleRouter = (db: DB) => {
   router.post("/", scheduleController.create);
   router.get("/:id", scheduleController.show);
   router.delete("/:id", scheduleController.delete);
+  router.post("/create-test-data", scheduleController.createTestData);
 
   return router;
 };

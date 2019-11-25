@@ -43,7 +43,16 @@ export default class ScheduleController {
     const schedule = req.body as Schedule;
     const newSchedule = await this.scheduleModel.store(schedule);
 
-    res.send(newSchedule);
+    res.json(newSchedule);
+  };
+
+  /**
+   * 5つのテストデータを追加するためのコントローラー
+   */
+  createTestData = async (_req: Request, res: Response) => {
+    const schedules = await this.scheduleModel.createTestData();
+
+    res.json(schedules);
   };
 
   /**
