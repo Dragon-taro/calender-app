@@ -5,6 +5,7 @@ default:
 
 front/install:
 	npm --prefix ./front install ./front
+	npm --prefix ./front run build
 
 redux-sample/install:
 	npm --prefix ./redux-sample install ./redux-sample
