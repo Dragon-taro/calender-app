@@ -23,8 +23,8 @@ export default class ScheduleModel extends BaseModel {
     const lastDay = targetMonth.endOf("month").toISOString();
 
     return await this.db.query<Schedule[]>(
-      "select * from schedules where startAt between ? and ? or endAt between ? and ?;",
-      [firstDay, lastDay, firstDay, lastDay]
+      "select * from schedules where date between ? and ?;",
+      [firstDay, lastDay]
     );
   }
 
@@ -46,12 +46,12 @@ export default class ScheduleModel extends BaseModel {
    */
   async store(schedule: Schedule) {
     const result = await this.db.query<{ insertId: number }>(
-      "insert into schedules (title, description, startAt, endAt) values (?, ?, ?, ?);",
+      "insert into schedules (title, description, date, location) values (?, ?, ?, ?);",
       [
         schedule.title,
         schedule.description,
-        new Date(schedule.startAt),
-        new Date(schedule.endAt)
+        new Date(schedule.date),
+        schedule.location
       ]
     );
 
@@ -68,5 +68,66 @@ export default class ScheduleModel extends BaseModel {
     await this.db.query<Schedule[]>("delete from schedules where id = ?", [id]);
 
     return;
+  }
+
+  /**
+   * テストデータを5つ追加
+   * Promise.allで全部終わるのを待ってそれの配列を返す
+   */
+  async createTestData() {
+    const testData = this.testData();
+    const newData = await Promise.all(
+      testData.map(async d => await this.store(d))
+    );
+
+    return newData;
+  }
+
+  /**
+   * 当日・前後1日・前後1ヶ月の同じ日付の日の予定を返す
+   */
+  private testData() {
+    const testData: Schedule[] = [
+      {
+        title: "会議",
+        description: "経営戦略会議",
+        location: "会議室A",
+        date: dayjs().toDate()
+      },
+      {
+        title: "会議",
+        description: "経営戦略会議",
+        location: "会議室A",
+        date: dayjs()
+          .add(1, "day")
+          .toDate()
+      },
+      {
+        title: "会議",
+        description: "経営戦略会議",
+        location: "会議室A",
+        date: dayjs()
+          .add(-1, "day")
+          .toDate()
+      },
+      {
+        title: "会議",
+        description: "経営戦略会議",
+        location: "会議室A",
+        date: dayjs()
+          .add(1, "month")
+          .toDate()
+      },
+      {
+        title: "会議",
+        description: "経営戦略会議",
+        location: "会議室A",
+        date: dayjs()
+          .add(-1, "month")
+          .toDate()
+      }
+    ];
+
+    return testData;
   }
 }

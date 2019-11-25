@@ -23,8 +23,8 @@ describe("DBのテスト", () => {
 
   it("insertのテスト", async () => {
     const result = await db.query(
-      "insert schedules (startAt, endAt, title, description) values (?, ?, ?, ?)",
-      [new Date(), new Date(), "テスト", "文字化け"]
+      "insert schedules (date, title, description) values (?, ?, ?)",
+      [new Date(), "テスト", "文字化け"]
     );
     console.log(result);
   });

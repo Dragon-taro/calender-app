@@ -31,8 +31,8 @@ describe("schedule modelのテスト", () => {
     const schedule: Schedule = {
       title: "テスト",
       description: "テスト用のデータです",
-      startAt: new Date(),
-      endAt: new Date()
+      date: new Date(),
+      location: "会議室"
     };
 
     const result = await scheduleModel.store(schedule);
@@ -56,5 +56,12 @@ describe("schedule modelのテスト", () => {
     const result = await scheduleModel.delete(id);
 
     console.log(result);
+  });
+
+  it("create test data", async () => {
+    const scheduleModel = new ScheduleModel(db);
+    const schedules = await scheduleModel.createTestData();
+
+    console.log(schedules);
   });
 });
