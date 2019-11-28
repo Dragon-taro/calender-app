@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-import": "^1.13.0",
     "css-loader": "^3.2.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.34.0",
