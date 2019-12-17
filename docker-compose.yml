@@ -29,8 +29,6 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
       TZ: Asia/Tokyo
-    ports:
-      - "3306:3306"
     volumes:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
       - ./db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
