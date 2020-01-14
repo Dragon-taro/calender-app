@@ -5,6 +5,8 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIos from "@material-ui/icons/ArrowForwardIos";
 import DehazeIcon from "@material-ui/icons/Dehaze";
 
+import { DatePicker } from "@material-ui/pickers";
+
 const StyledToolbar = withStyles({
   root: { padding: "0" }
 })(Toolbar);
@@ -13,7 +15,13 @@ const StyledTypography = withStyles({
   root: { margin: "0 30px 0 10px" }
 })(Typography);
 
-const Navigation = ({ setPrevioustMonth, setNextMonth }) => {
+const StyledDatePicker = withStyles({
+  root: { marginLeft: 30 }
+})(DatePicker);
+
+const Navigation = ({ setPrevioustMonth, setNextMonth, setMonth, month }) => {
+  console.log(month);
+
   return (
     <StyledToolbar>
       <IconButton>
@@ -29,6 +37,14 @@ const Navigation = ({ setPrevioustMonth, setNextMonth }) => {
       <IconButton size="small" onClick={setNextMonth}>
         <ArrowForwardIos />
       </IconButton>
+      <StyledDatePicker
+        value={month}
+        onChange={setMonth}
+        variant="inline"
+        format="YYYY年 M月"
+        animateYearScrolling
+        disableToolbar
+      />
     </StyledToolbar>
   );
 };
