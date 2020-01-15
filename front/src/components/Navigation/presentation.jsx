@@ -20,8 +20,6 @@ const StyledDatePicker = withStyles({
 })(DatePicker);
 
 const Navigation = ({ setPrevioustMonth, setNextMonth, setMonth, month }) => {
-  console.log(month);
-
   return (
     <StyledToolbar>
       <IconButton>
