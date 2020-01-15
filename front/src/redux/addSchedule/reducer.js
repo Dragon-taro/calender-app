@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 import {
   ADD_SCHEDULE_SET_VALUE,
   ADD_SCHEDULE_CLOSE_DIALOG,
@@ -8,7 +10,7 @@ const init = {
   form: {
     title: "",
     description: "",
-    date: null,
+    date: dayjs(),
     location: ""
   },
   isDialogOpen: false
