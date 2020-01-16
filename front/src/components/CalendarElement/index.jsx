@@ -8,9 +8,11 @@ import {
   isFirstDay,
   getMonth
 } from "../../services/calendar";
+import Schedule from "../Schedule";
+
 import * as styles from "./style.css";
 
-const CalendarElement = ({ day, month }) => {
+const CalendarElement = ({ day, month, schedules }) => {
   const today = dayjs();
 
   // 今月以外をグレーダウン
@@ -38,6 +40,11 @@ const CalendarElement = ({ day, month }) => {
           {day.format(format)}
         </span>
       </Typography>
+      <div className={styles.schedules}>
+        {schedules.map(e => (
+          <Schedule key={e.id} schedule={e} />
+        ))}
+      </div>
     </div>
   );
 };
