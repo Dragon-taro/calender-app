@@ -6,6 +6,7 @@ import {
   addScheduleOpenDialog,
   addScheduleSetValue
 } from "../../redux/addSchedule/actions";
+import { setSchedules } from "../../services/schedule";
 
 const mapStateToProps = state => ({
   calendar: state.calendar,
@@ -18,13 +19,21 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const mergeProps = (stateProps, dispatchProps) => ({
-  // ...statePropsを追加
-  ...stateProps,
-  calendar: createCalendar(stateProps.calendar),
-  month: stateProps.calendar.month,
-  ...dispatchProps
-});
+const mergeProps = (stateProps, dispatchProps) => {
+  const {
+    calendar: month,
+    schedules: { items: schedules }
+  } = stateProps;
+
+  const calendar = setSchedules(createCalendar(month), schedules);
+
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    calendar,
+    month
+  };
+};
 
 export default connect(
   mapStateToProps,
