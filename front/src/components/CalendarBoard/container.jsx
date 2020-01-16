@@ -7,8 +7,10 @@ import {
   addScheduleSetValue
 } from "../../redux/addSchedule/actions";
 
-const mapStateToProps = state => ({ calendar: state.calendar });
-
+const mapStateToProps = state => ({
+  calendar: state.calendar,
+  schedules: state.schedules
+});
 const mapDispatchToProps = dispatch => ({
   openAddScheduleDialog: d => {
     dispatch(addScheduleOpenDialog());
@@ -17,10 +19,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mergeProps = (stateProps, dispatchProps) => ({
+  // ...statePropsを追加
   ...stateProps,
-  ...dispatchProps,
-  month: stateProps.calendar,
-  calendar: createCalendar(stateProps.calendar)
+  calendar: createCalendar(stateProps.calendar),
+  month: stateProps.calendar.month,
+  ...dispatchProps
 });
 
 export default connect(
