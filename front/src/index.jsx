@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
@@ -18,7 +19,7 @@ import CurrentScheduleDialog from "./components/CurrentScheduleDialog/container"
 
 import rootReducer from "./redux/rootReducer";
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => (
   <Provider store={store}>
