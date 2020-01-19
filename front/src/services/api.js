@@ -23,3 +23,12 @@ export const post = async (path, body) => {
 
   return result;
 };
+
+export const deleteRequest = async path => {
+  const options = { method: "DELETE" };
+
+  await fetch(url(path), options);
+
+  // 204 No Contentが返ってくるので成功の場合は何もreturnしない
+  return;
+};
