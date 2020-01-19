@@ -3,7 +3,8 @@ import dayjs from "dayjs";
 import {
   ADD_SCHEDULE_SET_VALUE,
   ADD_SCHEDULE_CLOSE_DIALOG,
-  ADD_SCHEDULE_OPEN_DIALOG
+  ADD_SCHEDULE_OPEN_DIALOG,
+  ADD_SCHEDULE_START_EDIT
 } from "./actions";
 
 const init = {
@@ -13,7 +14,8 @@ const init = {
     date: dayjs(),
     location: ""
   },
-  isDialogOpen: false
+  isDialogOpen: false,
+  isStartEdit: false
 };
 
 const addScheduleReducer = (state = init, action) => {
@@ -23,9 +25,11 @@ const addScheduleReducer = (state = init, action) => {
     case ADD_SCHEDULE_SET_VALUE:
       return { ...state, form: { ...state.form, ...payload } };
     case ADD_SCHEDULE_OPEN_DIALOG:
-      return { ...state, isDialogOpen: true };
+      return { ...state, isDialogOpen: true, isStartEdit: false };
     case ADD_SCHEDULE_CLOSE_DIALOG:
       return init;
+    case ADD_SCHEDULE_START_EDIT:
+      return { ...state, isStartEdit: true };
     default:
       return state;
   }
