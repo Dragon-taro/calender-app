@@ -1,16 +1,7 @@
-import dayjs from "dayjs";
-import { SCHEDULES_ADD_ITEM } from "./actions";
+import { SCHEDULES_ADD_ITEM, SCHEDULES_DELETE_ITEM } from "./actions";
 
 const init = {
-  items: [
-    {
-      id: 1,
-      title: "テスト",
-      date: dayjs(),
-      location: "会議室",
-      description: "経営戦略について"
-    }
-  ],
+  items: [],
   isLoading: false
 };
 
@@ -22,6 +13,11 @@ const schedulesReducer = (state = init, action) => {
       return {
         ...state,
         items: [...state.items, { ...payload, id: state.items.length + 1 }]
+      };
+    case SCHEDULES_DELETE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== payload)
       };
     default:
       return state;
