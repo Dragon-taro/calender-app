@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "react-scripts start",
     "watch": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
