@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "react-scripts start",
     "watch": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
@@ -10,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.9.1",
+    "dayjs": "^1.8.20",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.3",
