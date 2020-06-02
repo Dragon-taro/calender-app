@@ -6,7 +6,7 @@ import {
   addScheduleSetValue,
 } from "../../redux/addSchedule/actions";
 
-import { schedulesAddItem } from "../../redux/schedules/actions";
+import { asyncSchedulesAddItem } from "../../redux/schedules/effects";
 
 const mapStateToProps = (state) => ({ schedule: state.addSchedule });
 
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addScheduleSetValue(value));
   },
   saveSchedule: (schedule) => {
-    dispatch(schedulesAddItem(schedule));
+    dispatch(asyncSchedulesAddItem(schedule));
     dispatch(addScheduleCloseDialog());
   },
 });
