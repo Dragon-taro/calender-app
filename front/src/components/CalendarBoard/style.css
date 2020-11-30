@@ -1,0 +1,9 @@
+.container {
+  height: 90vh;
+  margin-top: 10px;
+}
+
+.grid{
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
