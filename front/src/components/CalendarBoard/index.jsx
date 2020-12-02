@@ -7,7 +7,10 @@ import CalendarElement from "../CalendarElement";
 import { createCalendar } from "../../service/calendar";
 
 // material-uiからデータを取得
-import { GridList } from "@material-ui/core";
+import { GridList, Typography } from "@material-ui/core";
+
+// 曜日の配列
+const days = ["日","月","火","水","木","金","土"];
 
 const CalendarBoard = () => {
   console.log(calendar);
@@ -18,9 +21,22 @@ const CalendarBoard = () => {
         cols={7}
         spacing={0}
         cellHeight="auto">
+        {days.map(d => (
+          <li key={d}>
+            <Typography
+              className={styles.days}
+              color="textSecondary"
+              align="center"
+              variant="caption"
+              component="div"
+              >
+              {d}
+            </Typography>
+          </li>
+        ))}
         {calendar.map(c => (
           <li key={c.toISOString()}>
-            <CalendarElement>{c.format("D")}</CalendarElement>
+            <CalendarElement day={c} />
           </li>
         ))}
       </GridList>
