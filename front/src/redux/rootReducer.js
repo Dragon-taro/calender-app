@@ -4,7 +4,12 @@
 import { combineReducers } from "redux";
 import calendarReducer from "./calendar/reducer";
 
+import addScheduleReducer from "./addSchedule/reducer";
+
 // conbineReducersの引数は{[state名]:[reducer]}と言う感じで
-const rootReducer = combineReducers({ calendar: calendarReducer });
+const rootReducer = combineReducers({
+  calendar: calendarReducer,
+  addSchedule: addScheduleReducer
+});
 
 export default rootReducer;
