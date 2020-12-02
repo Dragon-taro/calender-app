@@ -4,6 +4,10 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 
+// DatePicker導入
+import DayjsUtils from "@date-io/dayjs";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+
 import CalendarBoard from "./components/CalendarBoard/container";
 
 // day.jsからデータを取得
@@ -19,8 +23,10 @@ const store = createStore(rootReducer);
 
 const App = () => (
   <Provider store={store} >
-    <Navigation />
-    <CalendarBoard />
+    <MuiPickersUtilsProvider utils={DayjsUtils}>
+      <Navigation />
+      <CalendarBoard />
+    </MuiPickersUtilsProvider>
   </Provider>
 )
 
