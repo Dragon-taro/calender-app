@@ -3,16 +3,13 @@ import * as styles from "./style.css";
 
 import CalendarElement from "../CalendarElement";
 
-// カレンダー表示を読み込み
-import { createCalendar } from "../../service/calendar";
-
 // material-uiからデータを取得
 import { GridList, Typography } from "@material-ui/core";
 
 // 曜日の配列
 const days = ["日","月","火","水","木","金","土"];
 
-const CalendarBoard = () => {
+const CalendarBoard = ({ calendar }) => {
   console.log(calendar);
   return(
     <div className={styles.container}>
@@ -45,6 +42,3 @@ const CalendarBoard = () => {
 }
 
 export default CalendarBoard;
-
-// カレンダー配列
-const calendar = createCalendar();

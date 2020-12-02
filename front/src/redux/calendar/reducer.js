@@ -14,7 +14,7 @@ const init = {
 }
 
 
-const calenderReducer = (state = init, action) => {
+const calendarReducer = (state = init, action) => {
   const { type, payload } = action;
   switch (type) {
     case CALENDAR_SET_MONTH:
