@@ -9,7 +9,7 @@ import { GridList, Typography } from "@material-ui/core";
 // 曜日の配列
 const days = ["日","月","火","水","木","金","土"];
 
-const CalendarBoard = ({ calendar }) => {
+const CalendarBoard = ({ calendar,month }) => {
   console.log(calendar);
   return(
     <div className={styles.container}>
@@ -33,7 +33,7 @@ const CalendarBoard = ({ calendar }) => {
         ))}
         {calendar.map(c => (
           <li key={c.toISOString()}>
-            <CalendarElement day={c} />
+            <CalendarElement day={c} month={month} />
           </li>
         ))}
       </GridList>

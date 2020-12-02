@@ -4,14 +4,13 @@ import dayjs from "dayjs";
 
 import { CALENDAR_SET_MONTH } from "./actions";
 
+import { formatMonth } from "../../service/calendar";
+
 const day = dayjs();
 
 // 初期値の設定
 // 月の情報は0~11で返されるので１プラスする
-const init = {
-  year: day.year(),
-  month: day.month() +1
-}
+const init = formatMonth(day);
 
 
 const calendarReducer = (state = init, action) => {

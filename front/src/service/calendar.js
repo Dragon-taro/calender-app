@@ -34,3 +34,20 @@ export const createCalendar = month => {
 export const getMonth = ({year, month}) => {
   return dayjs(`${year}-${month}`);
 }
+
+// 翌月を取得
+export const getNextMonth = month => {
+  const day = getMonth(month).add(1, "month");
+  return formatMonth(day);
+}
+
+// 先月を取得
+export const getPreviousMonth = month => {
+  const day = getMonth(month).add(-1, "month");
+  return formatMonth(day);
+}
+
+export const formatMonth = day => ({
+  month: day.month()+1,
+  year: day.year()
+})
