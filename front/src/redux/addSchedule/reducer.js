@@ -9,7 +9,7 @@ import {
 } from "./actions";
 
 const init = {
-  form {
+  form: {
     title: "",
     description: "",
     date: null,
