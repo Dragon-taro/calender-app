@@ -9,7 +9,7 @@ export const ADD_SCHEDULE_CLOSE_DIALOG = "ADD_SCHEDULE_CLOSE_DIALOG";
 
 // actions
 // payloadとして、{ [key]: value }のobjectを受け取る
-export const addSchedulesSetValue = payload => ({
+export const addScheduleSetValue = payload => ({
   type: ADD_SCHEDULE_SET_VALUE,
   payload
 })
