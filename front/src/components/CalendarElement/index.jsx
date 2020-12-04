@@ -16,7 +16,12 @@ import {
   } from '../../service/calendar';
 
 // ({children})にprops.childrenが入る
-const CalendarElement = ({day, month, schedules}) => {
+const CalendarElement = ({
+  day,
+  month,
+  schedules,
+  ...props
+  }) => {
 
   const today = dayjs();
 
@@ -51,7 +56,7 @@ const CalendarElement = ({day, month, schedules}) => {
 
       <div className={styles.schedules}>
         {schedules.map(e => (
-          <Schedule key={e.id} schedule={e} />
+          <Schedule key={e.id} schedule={e} {...props} />
         ))}
       </div>
 

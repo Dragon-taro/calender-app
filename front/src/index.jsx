@@ -22,6 +22,8 @@ import rootReducer from "./redux/rootReducer";
 
 import Navigation from "./components/Navigation/container";
 
+import CurrentScheduleDialog from "./components/CurrentScheduleDialog/container.jsx";
+
 const store = createStore(rootReducer);
 
 const App = () => (
@@ -30,6 +32,7 @@ const App = () => (
       <Navigation />
       <CalendarBoard />
       <AddScheduleDialog />
+      <CurrentScheduleDialog />
     </MuiPickersUtilsProvider>
   </Provider>
 )
