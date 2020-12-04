@@ -5,6 +5,8 @@ import * as styles from "./style.css";
 
 import { Typography } from "@material-ui/core";
 
+import Schedule from "../Schedule";
+
 // ロジックのインポート
 import {
   isSameMonth,
@@ -14,7 +16,7 @@ import {
   } from '../../service/calendar';
 
 // ({children})にprops.childrenが入る
-const CalendarElement = ({day, month}) => {
+const CalendarElement = ({day, month, schedules}) => {
 
   const today = dayjs();
 
@@ -46,6 +48,13 @@ const CalendarElement = ({day, month}) => {
           {day.format(format)}
         </span>
       </Typography>
+
+      <div className={styles.schedules}>
+        {schedules.map(e => (
+          <Schedule key={e.id} schedule={e} />
+        ))}
+      </div>
+
     </div>
   )
 }

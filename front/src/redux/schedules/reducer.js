@@ -1,9 +1,18 @@
 import { SCHEDULES_ADD_ITEM } from "./actions";
+import dayjs from "dayjs";
 
 // 初期化
 const init = {
   // schedule.formのデータ構造を配列でもつ必要があるためitem:[]とする
-  items: [],
+  items: [
+    {
+      id: 1,
+      title: "テスト",
+      date: dayjs(),
+      location: "会議室",
+      description: "経営戦略について"
+    }
+  ],
   // 今後サーバーからデータを取得するのでisLoadingと言うload中かどうかを判定するフラグを持たせる
   isLoading: false
 }

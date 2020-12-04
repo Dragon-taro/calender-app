@@ -26,25 +26,13 @@ const CalendarBoard = ({
         cols={7}
         spacing={0}
         cellHeight="auto">
-        {days.map(d => (
-          <li key={d}>
-            <Typography
-              className={styles.days}
-              color="textSecondary"
-              align="center"
-              variant="caption"
-              component="div"
-              >
-              {d}
-            </Typography>
-          </li>
-        ))}
-        {calendar.map(c => (
+
+        {calendar.map(({date, schedules}) => (
           <li
-            key={c.toISOString()}
-            onClick={()=> openAddScheduleDialog(c)}
+            key={date.toISOString()}
+            onClick={()=> openAddScheduleDialog(date)}
             >
-            <CalendarElement day={c} month={month} />
+              <CalendarElement day={date} month={month} schedules={schedules} />
           </li>
         ))}
       </GridList>
