@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import * as styles from "./style.css";
 
 import CalendarElement from "../CalendarElement";
@@ -16,8 +16,18 @@ const CalendarBoard = ({
   month,
   openAddScheduleDialog,
   schedules,
-  openCurrentScheduleDialog
+  openCurrentScheduleDialog,
+  fetchSchedule
  }) => {
+
+  // useEffectはreatの状態が更新されるたびに呼び出されるAPI
+  // 第二引数を配列で指定すると指定された変数が変更された時だけuseEffect()が呼び出される
+  // []を指定すると初回のみ実行になる
+  // これらはhooksと呼ばれるものでモダンなreactでのAPI
+   useEffect(()=>{
+     // 初回のみdateを取得する
+     fetchSchedule();
+   },[]);
 
   return(
     <div className={styles.container}>
