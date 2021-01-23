@@ -5,6 +5,7 @@ import { createCalendar } from "../../services/calendar";
 const mapStateToProps = state => ({ calendar: state.calendar });
 
 const mergeProps = stateProps => ({
+  month: stateProps.calendar,
   calendar: createCalendar(stateProps.calendar)
 });
 

@@ -1,15 +1,16 @@
 import React from "react";
 import dayjs from "dayjs";
 import * as styles from "./style.css";
-import { isSameMonth, isFirstDay, isSameDay } from "../../services/calendar";
+import { isSameMonth, isFirstDay, isSameDay, getMonth } from "../../services/calendar";
 
 import { Typography } from "@material-ui/core";
 
-const CalendarElement = ({ day }) => {
+const CalendarElement = ({ day, month }) => {
   const format = isFirstDay(day) ? "M月D日" : "D";
   const today = dayjs();
   const isToday = isSameDay(day, today);
-  const isCurrentMonth = isSameMonth(day, today);
+  const currentMonth = getMonth(month);
+  const isCurrentMonth = isSameMonth(day, currentMonth);
   const textColor = isCurrentMonth ? "textPrimary" : "textSecondary";
 
   return (
