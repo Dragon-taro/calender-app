@@ -4,7 +4,7 @@ export const createCalendar = month => {
   const firstDay = getMonth(month);
   const firstDayIndex = firstDay.day();
 
-  return Array(35)
+  return Array(37)
     .fill(0)
     .map((_, i) => {
       const diffFromFirstDay = i - firstDayIndex;
