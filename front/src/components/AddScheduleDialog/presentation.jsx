@@ -26,7 +26,8 @@ const AddScheduleDialog = ({
     isDialogOpen
   },
   closeDialog,
-  setSchedule
+  setSchedule,
+  saveSchedule
 }) => {
   return (
     <Dialog open={isDialogOpen} onClose={closeDialog} maxWidth="xs" fullWidth>
@@ -77,7 +78,7 @@ const AddScheduleDialog = ({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button color="primary" variant="outlined">
+        <Button color="primary" variant="outlined" onClick={saveSchedule}>
           保存
         </Button>
       </DialogActions>
