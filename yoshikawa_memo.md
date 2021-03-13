@@ -32,3 +32,10 @@
 * 1-6: combineReducers(redux)
 * トランスパイルの仕組み
 * 1-7: importで {} を使うのが一般的?
+* 最新のコンポーネントの書き方
+  * return不要?
+* importで、JavaScriptファイル以外は拡張子を省略できない?
+
+2-4
+  上記の書き方は、引数を分割して代入する方法で、この場合はchildrenという変数にprops.childrenが代入されます。何度もpropsと書かなくて済むので簡潔になります。
+  
