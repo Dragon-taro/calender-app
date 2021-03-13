@@ -13,3 +13,17 @@ export const createCalendar = () => {
     return firstDay.add(diffFromFirstDay, 'day');
   })
 };
+
+export const isSameDay = (dayOne, dayTwo) => {
+  const format = 'YYYYMMDD';
+  return dayOne.format(format) === dayTwo.format(format);
+}
+
+export const isSameMonth = (dayOne, dayTwo) => {
+  const format = 'YYYYMM';
+  return dayOne.format(format) === dayTwo.format(format);
+}
+
+export const isFirstDay = (day) => {
+  return day.date() === 1;
+}
