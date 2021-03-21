@@ -10,6 +10,8 @@ import 'dayjs/locale/ja';
 
 import rootReducer from './redux/rootReducer';
 
+import Navigation from './components/Navigation/container';
+
 dayjs.locale('ja');
 
 // store = { dispatch: f, sbscribe: f, getState: f, replaceReducer: f, Symbol: f }
@@ -18,6 +20,7 @@ const store = createStore(rootReducer); // storeの作成
 
 const App = () => (
   <Provider store={store}>
+    <Navigation />
     {/* CalendarBoard(container)以下で読み込んでいるコンポーネントでstoreを使えるようにする */}
     <CalendarBoard />
   </Provider>
