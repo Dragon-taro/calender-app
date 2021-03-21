@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 
-export const createCalendar = () => {
+export const createCalendar = (yearMonth) => {
   // 今月の最初の日
-  const firstDay = dayjs().startOf('month');
+  const firstDay = getMonth(yearMonth);
 
   // .day() => カレンダー上でその日のindexの取得が可能
   const firstDayIndex = firstDay.day(); // 1 (2021/3/1の場合)
@@ -13,6 +13,10 @@ export const createCalendar = () => {
     return firstDay.add(diffFromFirstDay, 'day');
   })
 };
+
+export const getMonth = ({ year, month }) => {
+  return dayjs(`${year}-${month}`);
+}
 
 export const isSameDay = (dayOne, dayTwo) => {
   const format = 'YYYYMMDD';

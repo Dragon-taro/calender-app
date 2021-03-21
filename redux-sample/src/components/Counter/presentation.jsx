@@ -3,7 +3,6 @@ import React from "react";
 import { decrement, increment } from "../../redux/count/actions";
 
 const Counter = ({ count, increment, decrement }) => {
-  // console.log({ count: count, increment: increment, decrement: decrement })
   return (
     <div>
       <div>カウント数：{count}</div>
