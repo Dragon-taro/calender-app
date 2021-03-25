@@ -1,14 +1,12 @@
 import dayjs from 'dayjs';
 import { CALENDAR_SET_MONTH } from './actions';
+import { formatMonth } from '../../services/calendar';
 
 const day = dayjs();
 
-const init = {
-  year: day.year(),
-  // day.month() => その月のindex。3月なら2になる
-  month: day.month() + 1
-};
+const init = formatMonth(day); // { month: 3, year: 2021 }。これが初期データになる
 
+// reducerの第一引数がstoreのデータになると考えてよい?
 const calendarReducer = (state = init, action) => {
   // { type: 'CALENDAR_SET_MONTH', paylod: ... }。変数名に同じkey名を使用する
   // type = 'CALENDAR_SET_MONTH'

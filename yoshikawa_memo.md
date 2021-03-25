@@ -1,8 +1,27 @@
 ### 吉川メモ
 * コンポーネントから `return()` までの間に、JSXで使用する変数・定数を定義しておける
+* コンポーネントの `return()` で返す一番トップのタグは1つだけ
 * presentational component => 表示の責務だけを追うコンポーネント
 * container component => データを扱うロジックを記載するコンポーネント
 * `Provider` でしていることはreact-reduxからstoreを参照できるようにしている?これだけではコンポーネントから `store` を参照できない
+* default exportをimport => 中括弧不要
+* named exportをimport => 中括弧必要
+* mapStateToProps
+  * 第一引数のstate = store.getState() = アプリで管理している全データ?
+  * 全データから、あるコンポーネントで操作するデータのみを抽出する役割
+  * storeStateが変更されるたびに、mapStateToPropsはcallされる
+  * connect()の第一引数にmapStateToPropsを渡すのがお決まり
+  参照: https://react-redux.js.org/using-react-redux/connect-mapstate
+* mapDispatchToProps
+  * Providerで渡ってきた `dispatch()` を使ってactionに通知する関数の定義
+* mergeProps
+  * 第1引数 => mapStateToProps(お決まり)
+  * 第2引数 => mapDispatchToProps(お決まり)
+
+* 表示で使用するコンポーネント = container component => container component内でconnect()を使用して、presentational componectに必要な情報を渡す?
+
+
+
 # 1-2
 * action
   * どのような処理をするか、その処理をするのに必要な引数を書いたオブジェクトを返す関数

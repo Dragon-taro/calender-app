@@ -4,16 +4,17 @@ import * as styles from './style.css';
 
 import { Typography } from '@material-ui/core';
 import dayjs from 'dayjs';
-import { isSameDay, isSameMonth, isFirstDay } from '../../services/calendar';
+import { isSameDay, isSameYearMonth, isFirstDay, getMonth, getFirstDayOfMonth } from '../../services/calendar';
 
-// 引数を分割して代入する方法?
-// { day } => props.day
-const CalendarElement = ({ day }) => {
+// { day: ..., month: { month: 3, year: 2021 } }の形式でpropsとして渡ってくる
+const CalendarElement = ({ day, yearMonth }) => {
+  const firtDayOfMonth = getFirstDayOfMonth(yearMonth); // その年月のdayjsインスタンスが返る
+  const isCurrentMonthDay = isSameYearMonth(day, firtDayOfMonth);
+  const textColor = isCurrentMonthDay ? 'textPrimary' : 'textSecondary';
+
   const format = isFirstDay(day) ? 'M月D日' : 'D';
   const today = dayjs();
-  const isToday = isSameDay(day, today)
-  const isThisMonth = isSameMonth(day, today);
-  const textColor = isThisMonth ? 'textPrimary' : 'textSecondary';
+  const isToday = isSameDay(day, today);
 
   return (
     <div className={styles.element}>
@@ -22,8 +23,7 @@ const CalendarElement = ({ day }) => {
         color={textColor}
         align='center'
         variant='caption'
-        component="div"
-      >
+        component="div">
         <span className={isToday ? styles.today : ''}>
           { day.format(format) }
         </span>

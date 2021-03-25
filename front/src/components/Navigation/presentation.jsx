@@ -14,7 +14,7 @@ const StyledTypography = withStyles({
   root: { margin: '0 30px 0 10px' }
 })(Typography);
 
-const Navigation = () => {
+const Navigation = ({ setNextMonth, setPreviousMonth }) => {
   return (
     <StyledToolbar>
       <IconButton>
@@ -23,11 +23,12 @@ const Navigation = () => {
       </IconButton>
       <img src="/images/calendar_icon.png" width="40" height="40" />
       <StyledTypography color="textSecondary" variant="h5" component="h1">カレンダー</StyledTypography>
-      <IconButton size="small">
+      {/* `setPreviousMonth = () => {}` のため、変数名だけ渡すでOK */}
+      <IconButton size="small" onClick={setPreviousMonth}>
         {/* ArrowBackIos: 「<」ボタン */}
         <ArrowBackIos />
       </IconButton>
-      <IconButton size="small">
+      <IconButton size="small" onClick={setNextMonth}>
         {/* ArrowForwardIos: 「>」ボタン */}
         <ArrowForwardIos />
       </IconButton>

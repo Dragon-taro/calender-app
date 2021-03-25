@@ -9,10 +9,9 @@ import * as styles from "./style.css";
 
 const daysOfTheWeek = ['日', '月', '火', '水', '木', '金', '土'];
 
-// 引数 = { calendar: { year: 2021, month: 3} }
-  // { calneder } => calendar = { year: 2021, month: 3 }
-  // calendar = mergePropsの値
-const CalnedarBoard = ({ calendar }) => {
+// 引数の値 = mergeProps
+// { calendar: [...], yearMonth: { year: 2021, month: 3 }}
+const CalnedarBoard = ({ calendar, yearMonth }) => {
   return (
     <div className={styles.container}>
       <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
@@ -29,11 +28,9 @@ const CalnedarBoard = ({ calendar }) => {
           </li>
         ))}
         {calendar.map(c => (
-
           // ISOStringという規格にする(一意の値)
           <li key={c.toISOString()}>
-            {/* <CalendarElement children={c.format('D')}></CalendarElement>と同じ */}
-            <CalendarElement day={c} />
+            <CalendarElement day={c} yearMonth={yearMonth}/>
           </li>
         ))}
       </GridList>
