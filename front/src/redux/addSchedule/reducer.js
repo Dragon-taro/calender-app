@@ -33,3 +33,5 @@ const addScheduleReducer = (state = init, action) => {
       return state;
   }
 };
+
+export default addScheduleReducer;

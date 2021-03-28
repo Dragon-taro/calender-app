@@ -11,7 +11,7 @@ const daysOfTheWeek = ['日', '月', '火', '水', '木', '金', '土'];
 
 // 引数の値 = mergeProps
 // { calendar: [...], yearMonth: { year: 2021, month: 3 }}
-const CalnedarBoard = ({ calendar, yearMonth }) => {
+const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog }) => {
   return (
     <div className={styles.container}>
       <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
@@ -29,7 +29,9 @@ const CalnedarBoard = ({ calendar, yearMonth }) => {
         ))}
         {calendar.map(c => (
           // ISOStringという規格にする(一意の値)
-          <li key={c.toISOString()}>
+          /* 教材では下記のように記載
+            <li key={c.toISOString()} onClick={() => openAddScheduleDialog()}> */
+          <li key={c.toISOString()} onClick={openAddScheduleDialog}>
             <CalendarElement day={c} yearMonth={yearMonth}/>
           </li>
         ))}

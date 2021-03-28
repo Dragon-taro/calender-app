@@ -12,6 +12,8 @@ import rootReducer from './redux/rootReducer';
 
 import Navigation from './components/Navigation/container';
 
+import AddScheduleDialog from './components/AddScheduleDialog/container';
+
 import DayjsUtils from "@date-io/dayjs";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
@@ -29,6 +31,7 @@ const App = () => (
       <Navigation />
       {/* CalendarBoard(container)以下で読み込んでいるコンポーネントでstoreを使えるようにする */}
       <CalendarBoard />
+      <AddScheduleDialog />
     </MuiPickersUtilsProvider>
   </Provider>
 );
