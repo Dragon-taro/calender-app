@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from "react";
+import { DatePicker } from "@material-ui/pickers";
 
 import { Icon, IconButton, Toolbar, Typography, withStyles } from '@material-ui/core';
 // 必要なiconsをimportし、<IconButton></IconButton>で囲って使用
@@ -14,7 +15,13 @@ const StyledTypography = withStyles({
   root: { margin: '0 30px 0 10px' }
 })(Typography);
 
-const Navigation = ({ setNextMonth, setPreviousMonth }) => {
+const StyledDatePicker = withStyles({
+  root: { marginLeft: 30 }
+})(DatePicker);
+
+const Navigation = ({ setNextMonth, setPreviousMonth, setMonth, firstDayOfMonth }) => {
+  // const [selectedDate, handleDateChange] = useState(new Date()); // useStateとは?
+
   return (
     <StyledToolbar>
       <IconButton>
@@ -32,6 +39,14 @@ const Navigation = ({ setNextMonth, setPreviousMonth }) => {
         {/* ArrowForwardIos: 「>」ボタン */}
         <ArrowForwardIos />
       </IconButton>
+      <StyledDatePicker
+        value={firstDayOfMonth} // value={selectedDate}
+        onChange={setMonth} // setMonth = () => {...}, onChange={handleDateChange}
+        variant="inline" // dialog or inline
+        format="YYYY年 M月"
+        animateYearScrolling
+        disableToolbar // 日付押下時のモーダルのToolbarを非表示
+      />
     </StyledToolbar>
   );
 };

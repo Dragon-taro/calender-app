@@ -19,6 +19,7 @@
   * 第2引数 => mapDispatchToProps(お決まり)
 
 * 表示で使用するコンポーネント = container component => container component内でconnect()を使用して、presentational componectに必要な情報を渡す?
+* このアプリではしていないが、本当はreducersでstateを変えるようにしたほうがよい?
 
 
 
