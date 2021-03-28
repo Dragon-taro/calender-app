@@ -8,7 +8,7 @@ const init = formatMonth(day); // { month: 3, year: 2021 }。これが初期デ�
 
 // reducerの第一引数がstoreのデータになると考えてよい?
 const calendarReducer = (state = init, action) => {
-  // { type: 'CALENDAR_SET_MONTH', paylod: ... }。変数名に同じkey名を使用する
+  // { type: 'CALENDAR_SET_MONTH', payload: ... }。変数名に同じkey名を使用する
   // type = 'CALENDAR_SET_MONTH'
   const { type, payload } = action;
   switch(type) {
