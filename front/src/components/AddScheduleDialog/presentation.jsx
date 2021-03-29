@@ -9,7 +9,8 @@ import {
   Grid
 } from '@material-ui/core';
 
-import { LocationOnOutlined, NotesOutlined } from '@material-ui/icons';
+import { LocationOnOutlined, NotesOutlined, AccessTime } from '@material-ui/icons';
+import { DatePicker } from '@material-ui/pickers';
 import { withStyles } from '@material-ui/styles';
 
 const spacer = { margin: '4px 0' };
@@ -21,7 +22,7 @@ const Title = withStyles({
 // isDialogOpenのみが使える(scheduleは使えない)
 const AddScheduleDialog = ({
   schedule: {
-    form: { title, location, description },
+    form: { title, location, description, date },
     isDialogOpen
   },
   closeDialog,
@@ -33,6 +34,24 @@ const AddScheduleDialog = ({
         {/* autoFocus={true} => ダイアログ表示時にfocusが当たっている */}
         <Title autoFocus fullWidth placeholder="タイトルと日時を追加"
           value={title} onChange={(e) => setSchedule({ title: e.target.value })} />
+        <Grid container spacing={1} alignItems='center' justify='space-between'>
+          <Grid item>
+            <AccessTime />
+          </Grid>
+          <Grid item xs={10}>
+            <DatePicker
+              value={date}
+              // 引数のdateはdayjsのオブジェクト
+              onChange={(date) => setSchedule({ date: date })}
+              variant='inline'
+              format='YYYY年M月D日'
+              animateYearScrolling
+              disableToolbar
+              fullWidth
+              style={spacer}
+            />
+          </Grid>
+        </Grid>
         {/* containerのGridでitemのGridを囲う */}
         <Grid container spacing={1} alignItems='center' justify="space-between">
           <Grid item>
