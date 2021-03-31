@@ -77,3 +77,5 @@
 * 4-2:
   * reducerでデータが更新されるたびに `mapStateToProps` が実行される、という認識で合っているか?
   * `mapStateToProps`がcallされるたびに、`mapDispatchToProps`が実行される、という認識であっているか
+* 4-5:
+  `() => openAddScheduleDialog(c)`の構造の理解

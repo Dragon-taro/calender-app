@@ -5,7 +5,7 @@
 import { connect } from 'react-redux';
 import CalendarBoard from './presentation';
 import { createCalendar } from '../../services/calendar'
-import { addScheduleOpenDialog } from '../../redux/addSchedule/actions';
+import { addScheduleSetValue, addScheduleOpenDialog } from '../../redux/addSchedule/actions';
 
 // state = { calendar: { year: 2021, month: 3 } } = store.getState() = const init
 // 上記値が引数として自動で渡ってくる?
@@ -14,8 +14,9 @@ import { addScheduleOpenDialog } from '../../redux/addSchedule/actions';
 const mapStateToProps = state => ({ calendar: state.calendar });
 
 const mapDispatchToProps = dispatch => ({
-  openAddScheduleDialog: () => {
+  openAddScheduleDialog: (date) => {
     dispatch(addScheduleOpenDialog());
+    dispatch(addScheduleSetValue({ date: date }));
   }
 });
 

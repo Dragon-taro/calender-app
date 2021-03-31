@@ -29,9 +29,8 @@ const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog }) => {
         ))}
         {calendar.map(c => (
           // ISOStringという規格にする(一意の値)
-          /* 教材では下記のように記載
-            <li key={c.toISOString()} onClick={() => openAddScheduleDialog()}> */
-          <li key={c.toISOString()} onClick={openAddScheduleDialog}>
+          // c = dayjsオブジェクトの日付
+          <li key={c.toISOString()} onClick={() => openAddScheduleDialog(c)}>
             <CalendarElement day={c} yearMonth={yearMonth}/>
           </li>
         ))}
