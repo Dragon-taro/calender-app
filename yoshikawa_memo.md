@@ -79,3 +79,4 @@
   * `mapStateToProps`がcallされるたびに、`mapDispatchToProps`が実行される、という認識であっているか
 * 4-5:
   `() => openAddScheduleDialog(c)`の構造の理解
+* 5-1: reduxでは基本mutationは使わない?
