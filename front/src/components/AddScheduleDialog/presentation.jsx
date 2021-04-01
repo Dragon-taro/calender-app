@@ -29,7 +29,8 @@ const AddScheduleDialog = ({
     isDialogOpen
   },
   closeDialog,
-  setSchedule
+  setSchedule,
+  saveSchedule
  }) => {
   return (
     <Dialog open={isDialogOpen} onClose={closeDialog} maxWidth='xs' fullWidth>
@@ -42,6 +43,7 @@ const AddScheduleDialog = ({
       </DialogActions>
       <DialogContent>
         {/* autoFocus={true} => ダイアログ表示時にfocusが当たっている */}
+        {/* onChangeは、1文字でも入力された時点で実行され、storeが更新される */}
         <Title autoFocus fullWidth placeholder="タイトルと日時を追加"
           value={title} onChange={(e) => setSchedule({ title: e.target.value })} />
         <Grid container spacing={1} alignItems='center' justify='space-between'>
@@ -83,7 +85,7 @@ const AddScheduleDialog = ({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button color='primary' variant='outlined'>
+        <Button color='primary' variant='outlined' onClick={saveSchedule}>
           保存
         </Button>
       </DialogActions>

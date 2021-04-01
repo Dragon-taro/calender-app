@@ -15,3 +15,5 @@ const schedulesReducer = (state = init, action) => {
       return state;
   }
 };
+
+export default schedulesReducer;

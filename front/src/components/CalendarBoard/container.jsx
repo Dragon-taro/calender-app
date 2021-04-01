@@ -11,7 +11,9 @@ import { addScheduleSetValue, addScheduleOpenDialog } from '../../redux/addSched
 // 上記値が引数として自動で渡ってくる?
 // storeの状態が変わると、mapStateToPropsが実行される
 // カレンダーの「>」ボタン押下後 => state = { calendar: { year: 2021, month: 4 }}
-const mapStateToProps = state => ({ calendar: state.calendar });
+const mapStateToProps = state => ({
+  calendar: state.calendar
+});
 
 const mapDispatchToProps = dispatch => ({
   openAddScheduleDialog: (date) => {
