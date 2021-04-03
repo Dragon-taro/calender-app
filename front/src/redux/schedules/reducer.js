@@ -1,7 +1,7 @@
 import { SCHEDULE_ADD_ITEM } from './actions';
 
 const init = {
-  items: [],
+  items: [], // 追加データのkeys: { id, title, description, date, location }
   isLoading: false
 };
 

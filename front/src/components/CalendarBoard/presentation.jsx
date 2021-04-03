@@ -30,6 +30,8 @@ const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog }) => {
           // ISOStringという規格にする(一意の値)
           // c = dayjsオブジェクトの日付
           <li key={date.toISOString()} onClick={() => openAddScheduleDialog(date)}>
+            {/* 🚨下記形式のpropsがコンポーネントに渡される
+              { day: date, yearMonth: yearMonth, schedules: schedules } */}
             <CalendarElement day={date} yearMonth={yearMonth} schedules={schedules}/>
           </li>
         ))}

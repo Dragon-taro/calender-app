@@ -5,9 +5,10 @@ import * as styles from './style.css';
 import { Typography } from '@material-ui/core';
 import dayjs from 'dayjs';
 import { isSameDay, isSameYearMonth, isFirstDay, getMonth, getFirstDayOfMonth } from '../../services/calendar';
+import Schedule from '../Schedule';
 
 // { day: ..., month: { month: 3, year: 2021 } }の形式でpropsとして渡ってくる
-const CalendarElement = ({ day, yearMonth }) => {
+const CalendarElement = ({ day, yearMonth, schedules }) => {
   const firtDayOfMonth = getFirstDayOfMonth(yearMonth); // その年月のdayjsインスタンスが返る
   const isCurrentMonthDay = isSameYearMonth(day, firtDayOfMonth);
   const textColor = isCurrentMonthDay ? 'textPrimary' : 'textSecondary';
@@ -28,6 +29,11 @@ const CalendarElement = ({ day, yearMonth }) => {
           { day.format(format) }
         </span>
       </Typography>
+      <div className={styles.schedules}>
+        {schedules.map(schedule => (
+          <Schedule key={schedule.id} schedule={schedule} />
+        ))}
+      </div>
     </div>
   )
 }
