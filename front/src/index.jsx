@@ -17,6 +17,8 @@ import AddScheduleDialog from './components/AddScheduleDialog/container';
 import DayjsUtils from "@date-io/dayjs";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
+import CurrentScheduleDialog from './components/CurrentScheduleDialog/container';
+
 dayjs.locale('ja');
 
 // store = { dispatch: f, sbscribe: f, getState: f, replaceReducer: f, Symbol: f }
@@ -32,6 +34,7 @@ const App = () => (
       {/* CalendarBoard(container)以下で読み込んでいるコンポーネントでstoreを使えるようにする */}
       <CalendarBoard />
       <AddScheduleDialog />
+      <CurrentScheduleDialog />
     </MuiPickersUtilsProvider>
   </Provider>
 );

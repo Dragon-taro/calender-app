@@ -10,7 +10,7 @@ import * as styles from "./style.css";
 const daysOfTheWeek = ['日', '月', '火', '水', '木', '金', '土'];
 
 // 引数の値 = mergeProps
-const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog }) => {
+const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog, openCurrentScheduleDialog }) => {
   return (
     <div className={styles.container}>
       <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
@@ -32,7 +32,7 @@ const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog }) => {
           <li key={date.toISOString()} onClick={() => openAddScheduleDialog(date)}>
             {/* 🚨下記形式のpropsがコンポーネントに渡される
               { day: date, yearMonth: yearMonth, schedules: schedules } */}
-            <CalendarElement day={date} yearMonth={yearMonth} schedules={schedules}/>
+            <CalendarElement day={date} yearMonth={yearMonth} schedules={schedules} onClickSchedule={openCurrentScheduleDialog}/>
           </li>
         ))}
       </GridList>

@@ -7,6 +7,7 @@ import CalendarBoard from './presentation';
 import { createCalendar } from '../../services/calendar'
 import { addScheduleSetValue, addScheduleOpenDialog } from '../../redux/addSchedule/actions';
 import { setSchedules } from '../../services/schedule';
+import { currentScheduleSetItem, currentScheduleOpenDialog } from '../../redux/currentSchedule/actions';
 
 // state = { calendar: { year: 2021, month: 3 } } = store.getState() = const init
 // 上記値が引数として自動で渡ってくる?
@@ -21,6 +22,12 @@ const mapDispatchToProps = dispatch => ({
   openAddScheduleDialog: (date) => {
     dispatch(addScheduleOpenDialog());
     dispatch(addScheduleSetValue({ date: date }));
+  },
+  openCurrentScheduleDialog: (schedule, e) => {
+    e.stopPropagation();
+
+    dispatch(currentScheduleSetItem(schedule));
+    dispatch(currentScheduleOpenDialog());
   }
 });
 

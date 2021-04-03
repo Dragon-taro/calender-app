@@ -8,7 +8,7 @@ import { isSameDay, isSameYearMonth, isFirstDay, getMonth, getFirstDayOfMonth } 
 import Schedule from '../Schedule';
 
 // { day: ..., month: { month: 3, year: 2021 } }の形式でpropsとして渡ってくる
-const CalendarElement = ({ day, yearMonth, schedules }) => {
+const CalendarElement = ({ day, yearMonth, schedules, ...props }) => {
   const firtDayOfMonth = getFirstDayOfMonth(yearMonth); // その年月のdayjsインスタンスが返る
   const isCurrentMonthDay = isSameYearMonth(day, firtDayOfMonth);
   const textColor = isCurrentMonthDay ? 'textPrimary' : 'textSecondary';
@@ -31,7 +31,7 @@ const CalendarElement = ({ day, yearMonth, schedules }) => {
       </Typography>
       <div className={styles.schedules}>
         {schedules.map(schedule => (
-          <Schedule key={schedule.id} schedule={schedule} />
+          <Schedule key={schedule.id} schedule={schedule} {...props} />
         ))}
       </div>
     </div>
