@@ -10,7 +10,6 @@ import * as styles from "./style.css";
 const daysOfTheWeek = ['日', '月', '火', '水', '木', '金', '土'];
 
 // 引数の値 = mergeProps
-// { calendar: [...], yearMonth: { year: 2021, month: 3 }}
 const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog }) => {
   return (
     <div className={styles.container}>
@@ -27,11 +26,11 @@ const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog }) => {
             </Typography>
           </li>
         ))}
-        {calendar.map(c => (
+        {calendar.map(({ date, schedules }) => (
           // ISOStringという規格にする(一意の値)
           // c = dayjsオブジェクトの日付
-          <li key={c.toISOString()} onClick={() => openAddScheduleDialog(c)}>
-            <CalendarElement day={c} yearMonth={yearMonth}/>
+          <li key={date.toISOString()} onClick={() => openAddScheduleDialog(date)}>
+            <CalendarElement day={date} yearMonth={yearMonth} schedules={schedules}/>
           </li>
         ))}
       </GridList>
