@@ -1,5 +1,5 @@
 import { DECREMENT } from "./constants";
-import { INCREMENT } from "./contsants"
+import { INCREMENT } from "./constants"
 
 export const increment = payload => ({
   type: INCREMENT,
