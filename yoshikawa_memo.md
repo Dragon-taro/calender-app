@@ -81,4 +81,10 @@
   `() => openAddScheduleDialog(c)`の構造の理解
 * 5-1: reduxでは基本mutationは使わない?
 * 5-3: JSの式と文の違いについて調べる
+* 5-6:
+  .jsxのファイルなら、`import React` は必須?
 * 6-2: redux-thunkについて調べてみる
+* 6-3:
+  * redux-thunk
+  * applyMiddleware
+  * userEffect

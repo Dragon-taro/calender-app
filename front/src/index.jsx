@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import CalendarBoard from "./components/CalendarBoard/container";
 import dayjs from 'dayjs';
@@ -23,7 +24,7 @@ dayjs.locale('ja');
 
 // store = { dispatch: f, sbscribe: f, getState: f, replaceReducer: f, Symbol: f }
 // store.getState() = combineReducersの引数の値 = { calendar: { year: 2021, month: 3 } }
-const store = createStore(rootReducer); // storeの作成
+const store = createStore(rootReducer, applyMiddleware(thunk)); // storeの作成
 
 const App = () => (
   <Provider store={store}>

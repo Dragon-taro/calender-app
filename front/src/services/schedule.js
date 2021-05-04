@@ -1,4 +1,5 @@
 import { isSameDay } from './calendar';
+import dayjs from 'dayjs';
 
 /* 下記条件の時に {}とreturnを省略できる(参照: https://hoshinotsuyoshi.com/post/arrow_func_no_brace/)
   1. 関数内の式が一文
@@ -13,3 +14,7 @@ export const setSchedules = (calendar, schedules) =>
   }));
 // export const setSchedules = (arguments) => { return calendar.map... }と同じ
 
+export const formatSchedule = (schedule) => ({
+  ...schedule,
+  date: dayjs(schedule.date)
+});

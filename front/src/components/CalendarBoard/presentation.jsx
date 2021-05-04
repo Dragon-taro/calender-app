@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GridList, Typography } from "@material-ui/core";
 // JavaScriptファイル以外は拡張子を省略できない?
 import CalendarElement from '../CalendarElement';
@@ -10,7 +10,10 @@ import * as styles from "./style.css";
 const daysOfTheWeek = ['日', '月', '火', '水', '木', '金', '土'];
 
 // 引数の値 = mergeProps
-const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog, openCurrentScheduleDialog }) => {
+const CalnedarBoard = ({ calendar, yearMonth, openAddScheduleDialog, openCurrentScheduleDialog, fetchSchedule }) => {
+
+  useEffect(() => { fetchSchedule(); }, []); // 初回レンダリング時に実行される
+
   return (
     <div className={styles.container}>
       <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">

@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { getNextMonth, getPreviousMonth, getMonth, formatMonth, getFirstDayOfMonth } from '../../services/calendar';
 import { calendarSetMonth } from '../../redux/calendar/actions';
 
+import { asyncSchedulesFetchItem } from '../../redux/schedules/effects';
+
 // state = { calendar: { year: 2021, month: 3 } } = const init(reducer)
 const mapStateToProps = state => ({ calendar: state.calendar });
 
@@ -12,6 +14,9 @@ const mapStateToProps = state => ({ calendar: state.calendar });
 const mapDispatchToProps = dispatch => ({
   setMonth: month => {
     dispatch(calendarSetMonth(month));
+  },
+  fetchItem: (month) => { // month = { month: 5, year: 2021 }
+    dispatch(asyncSchedulesFetchItem(month));
   }
 });
 
@@ -22,15 +27,18 @@ const mergeProps = (stateProps, dispatchProps) => ({
   setNextMonth: () => {
     const nextMonth = getNextMonth(stateProps.calendar); // { month: 4, year: 2021 }
     dispatchProps.setMonth(nextMonth);
+    dispatchProps.fetchItem(nextMonth);
   },
   setPreviousMonth: () => {
     const previousMonth = getPreviousMonth(stateProps.calendar);
     dispatchProps.setMonth(previousMonth);
+    dispatchProps.fetchItem(previousMonth);
   },
   setMonth: (dayObj) => {
     // 実行時に選択された日付のdayjsインスタンスがくる
     const month = formatMonth(dayObj); // { year: 2021, month: 4 }のような形式にする
     dispatchProps.setMonth(month);
+    dispatchProps.fetchItem(month);
   }
 });
 
