@@ -7,3 +7,19 @@ export const get = async (path) => {
 
   return schedules;
 };
+
+const header = {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
+export const post = async (path, body) => {
+  const options = { ...header, method: 'POST', body: JSON.stringify(body) };
+
+  const response = await fetch(url(path), options);
+
+  const addedSchedule = response.json();
+
+  return addedSchedule;
+};

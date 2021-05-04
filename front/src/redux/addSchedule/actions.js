@@ -4,7 +4,7 @@ export const ADD_SCHEDULE_CLOSE_DIALOG = 'ADD_SCHEDULE_CLOSE_DIALOG';
 
 export const addScheduleSetValue = (payload) => ({ // Objectを受け取る
   type: ADD_SCHEDULE_SET_VALUE,
-  payload // `payload: payload` となる?
+  payload // `payload: payload` なら左記のように省略可能
 });
 
 export const addScheduleOpenDialog = () => ({
