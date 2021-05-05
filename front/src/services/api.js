@@ -23,3 +23,9 @@ export const post = async (path, body) => {
 
   return addedSchedule;
 };
+
+export const deleteRequest = async path => {
+  await fetch(url(path), { method: 'DELETE' });
+
+  return; // 204が返ってくるので何もしない
+};

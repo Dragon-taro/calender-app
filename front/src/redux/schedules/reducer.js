@@ -1,7 +1,8 @@
 import {
   SCHEDULE_ADD_ITEM,
   SCHEDULES_FETCH_ITEM,
-  SCHEDULES_SET_LOADING
+  SCHEDULES_SET_LOADING,
+  SCHEDULES_DELETE_ITEM
 } from './actions';
 
 const init = {
@@ -29,6 +30,12 @@ const schedulesReducer = (state = init, action) => {
       return {
         ...state,
         isLoading: true
+      };
+    case SCHEDULES_DELETE_ITEM:
+      return {
+        ...state,
+        items: payload,
+        isLoading: false
       };
     default:
       return state;
