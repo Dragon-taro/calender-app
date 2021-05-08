@@ -20,6 +20,8 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 import CurrentScheduleDialog from './components/CurrentScheduleDialog/container';
 
+import ErrorSnackbar from './components/ErrorSnackbar/container';
+
 dayjs.locale('ja');
 
 // store = { dispatch: f, sbscribe: f, getState: f, replaceReducer: f, Symbol: f }
@@ -36,6 +38,7 @@ const App = () => (
       <CalendarBoard />
       <AddScheduleDialog />
       <CurrentScheduleDialog />
+      <ErrorSnackbar />
     </MuiPickersUtilsProvider>
   </Provider>
 );
