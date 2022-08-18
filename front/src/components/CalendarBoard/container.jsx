@@ -4,8 +4,9 @@ import { createCalendar } from "../../services/calendar";
 
 const mapStateToProps = (state) => ({ calendar: state.calendar });
 
-const mergeProps = stateProps => ({
-  calendar: createCalendar(stateProps.calendar)
+const mergeProps = (stateProps, dispatchProps) => ({
+  month: stateProps.calendar,
+  calendar: createCalendar(stateProps.calendar),
 });
 
 export default connect(mapStateToProps, null, mergeProps)(CalendarBoard);
