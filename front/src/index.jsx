@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
 
+import DayjsUtils from "@date-io/dayjs";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+
 dayjs.locale("ja");
 
 // store
@@ -20,8 +23,10 @@ const store = createStore(rootReducer);
 
 const App = () => (
   <Provider store={store}>
-    <Navigation />
-    <CalendarBoard />
+    <MuiPickersUtilsProvider utils={DayjsUtils}>
+      <Navigation />
+      <CalendarBoard />
+    </MuiPickersUtilsProvider>
   </Provider>
 );
 
