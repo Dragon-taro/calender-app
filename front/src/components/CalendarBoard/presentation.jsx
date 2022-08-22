@@ -6,7 +6,12 @@ import * as styles from "./style.css";
 const days = ["日", "月", "火", "水", "木", "金", "土"];
 
 
-const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
+const CalendarBoard = ({
+  calendar,
+  month,
+  openAddScheduleDialog,
+  schedules,
+}) => {
   return (
     <div className={styles.container}>
       <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
