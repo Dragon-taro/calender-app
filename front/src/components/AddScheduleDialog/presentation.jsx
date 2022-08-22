@@ -54,7 +54,7 @@ const AddScheduleDialog = ({
           value={title}
           onChange={(e) => setSchedule({ title: e.target.value })}
         />
-        <Grid container spacing={1} alignItems="center" justify="space-between">
+        <Grid container spacing={1} alignItems="center" justifyContent="space-between">
           <Grid item>
             <AccessTime />
           </Grid>
@@ -71,7 +71,7 @@ const AddScheduleDialog = ({
             />
           </Grid>
         </Grid>
-        <Grid container spacing={1} alignItems="center" justify="space-between">
+        <Grid container spacing={1} alignItems="center" justifyContent="space-between">
           <Grid item>
             <LocationOnOutlined />
           </Grid>
@@ -85,7 +85,7 @@ const AddScheduleDialog = ({
             />
           </Grid>
         </Grid>
-        <Grid container spacing={1} alignItems="center" justify="space-between">
+        <Grid container spacing={1} alignItems="center" justifyContent="space-between">
           <Grid item>
             <NotesOutlined />
           </Grid>

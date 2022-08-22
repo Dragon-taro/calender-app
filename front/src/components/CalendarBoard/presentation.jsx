@@ -1,6 +1,7 @@
 import React from "react";
 import CalendarElement from "../CalendarElement";
 import { GridList, Typography } from "@material-ui/core";
+import ImageList from "@material-ui/core/ImageList";
 import * as styles from "./style.css";
 
 const days = ["日", "月", "火", "水", "木", "金", "土"];
@@ -14,7 +15,7 @@ const CalendarBoard = ({
 }) => {
   return (
     <div className={styles.container}>
-      <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
+      <ImageList className={styles.grid} cols={7} gap={0} rowHeight="auto">
         {days.map((d) => (
           <li key={d}>
             <Typography
@@ -33,7 +34,7 @@ const CalendarBoard = ({
             <CalendarElement day={c} month={month} />
           </li>
         ))}
-      </GridList>
+      </ImageList>
     </div>
   );
 };
