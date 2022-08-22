@@ -13,6 +13,7 @@ const CalendarBoard = ({
   openAddScheduleDialog,
   schedules,
 }) => {
+  console.log(calendar);
   return (
     <div className={styles.container}>
       <ImageList className={styles.grid} cols={7} gap={0} rowHeight="auto">
@@ -29,9 +30,12 @@ const CalendarBoard = ({
             </Typography>
           </li>
         ))}
-        {calendar.map((c) => (
-          <li key={c.toISOString()} onClick={() => openAddScheduleDialog(c)}>
-            <CalendarElement day={c} month={month} />
+        {calendar.map(({ date, schedules }) => (
+          <li
+            key={date.toISOString()}
+            onClick={() => openAddScheduleDialog(date)}
+          >
+            <CalendarElement day={date} month={month} schedules={schedules} />
           </li>
         ))}
       </ImageList>
