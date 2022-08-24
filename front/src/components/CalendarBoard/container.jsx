@@ -7,12 +7,21 @@ import {
   addScheduleOpenDialog,
   addScheduleSetValue,
 } from "../../redux/addSchedule/actions";
-
+import {
+  currentScheduleSetItem,
+  currentScheduleOpenDialog,
+} from "../../redux/currentSchedule/actions";
 
 const mapDispatchToProps = (dispatch) => ({
-  openAddScheduleDialog: d => {
+  openAddScheduleDialog: (d) => {
     dispatch(addScheduleOpenDialog());
     dispatch(addScheduleSetValue({ date: d }));
+  },
+  openCurrentScheduleDialog: (schedule, e) => {
+    // 他のイベントが発火するのをキャンセル
+    e.stopPropagation();
+    dispatch(currentScheduleSetItem(schedule));
+    dispatch(currentScheduleOpenDialog());
   },
 });
 

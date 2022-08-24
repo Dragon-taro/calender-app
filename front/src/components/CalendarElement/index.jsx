@@ -8,7 +8,7 @@ import { isSameMonth, isFirstDay, isSameDay, getMonth} from "../../services/cale
 import Schedule from "../Schedule";
 
 
-const CalendarElement = ({ day, month, schedules }) => {
+const CalendarElement = ({ day, month, schedules, ...props }) => {
   const today = dayjs();
 
   // 月の最初だけ月情報をつける
@@ -38,7 +38,7 @@ const CalendarElement = ({ day, month, schedules }) => {
       </Typography>
       <div className={styles.schedules}>
         {schedules.map((e) => (
-          <Schedule key={e.id} schedule={e} />
+          <Schedule key={e.id} schedule={e} {...props} />
         ))}
       </div>
     </div>

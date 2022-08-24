@@ -11,7 +11,7 @@ const CalendarBoard = ({
   calendar,
   month,
   openAddScheduleDialog,
-  schedules,
+  openCurrentScheduleDialog,
 }) => {
   console.log(calendar);
   return (
@@ -35,7 +35,12 @@ const CalendarBoard = ({
             key={date.toISOString()}
             onClick={() => openAddScheduleDialog(date)}
           >
-            <CalendarElement day={date} month={month} schedules={schedules} />
+            <CalendarElement
+              day={date}
+              month={month}
+              schedules={schedules}
+              onClickSchedule={openCurrentScheduleDialog}
+            />
           </li>
         ))}
       </ImageList>
