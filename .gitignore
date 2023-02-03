@@ -2,3 +2,5 @@ node_modules
 bundle.js
 db/volume
 .env
+package-lock.json
+server/package-lock.json
