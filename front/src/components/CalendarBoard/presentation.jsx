@@ -7,7 +7,7 @@ import * as styles from "./style.css"
 
 const days = ["日", "月", "火", "水", "木", "金", "土"]
 
-const CalendarBoard = ({ calendar, month }) => {
+const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
   console.log(calendar)
   console.log(days)
   return (
@@ -27,7 +27,7 @@ const CalendarBoard = ({ calendar, month }) => {
           </ImageListItem>
         ))}
         {calendar.map(c => (
-          <ImageListItem key={c.toISOString()}>
+          <ImageListItem key={c.toISOString()} onClick={() => openAddScheduleDialog()}>
             <CalendarElement day={c} month={month} />
           </ImageListItem>
         ))}
