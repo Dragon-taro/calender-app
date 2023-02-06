@@ -3,7 +3,10 @@ import { addScheduleOpenDialog, addScheduleSetValue } from "../../redux/addSched
 import { createCalendar } from "../../services/calendar"
 import CalendarBoard from "./presentation"
 
-const mapStateToProps = state => ({ calendar: state.calendar })
+const mapStateToProps = state => ({
+  calendar: state.calendar,
+  schedules: state.schedules
+})
 
 const mapDispatchToProps = dispatch => ({
   openAddScheduleDialog: d => {
