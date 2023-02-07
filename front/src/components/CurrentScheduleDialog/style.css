@@ -1,0 +1,12 @@
+.closeButton {
+  text-align: right;
+}
+
+.box {
+  background-color: rgb(121, 134, 203);
+  width: 16px;
+  height: 16px;
+  display: block;
+  margin-left: 6px;
+  border-radius: 4px;
+}
