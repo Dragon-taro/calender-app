@@ -4,9 +4,10 @@ import dayjs from 'dayjs'
 
 import * as style from "./style.css"
 import { getMonth, isFirstDay, isSameDay, isSameMonth } from '../../services/calendar'
+import Schedule from '../Schedule'
 
 
-const CalendarElement = ({ day, month }) => {
+const CalendarElement = ({ day, month, schedules }) => {
   // 今月以外をグレーダウン
   const currentMonth = getMonth(month)
   const isCurrentMonth = isSameMonth(day, currentMonth)
@@ -32,6 +33,11 @@ const CalendarElement = ({ day, month }) => {
           {day.format(format)}
         </span>
       </Typography>
+      <div className={style.schedules}>
+        {schedules.map(e => (
+          <Schedule key={e.id} schedule={e} />
+        ))}
+      </div>
     </div>
   )
 }
