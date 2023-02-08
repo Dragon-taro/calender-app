@@ -12,12 +12,13 @@ import rootReducer from "./redux/rootReducer";
 import Navigation from "./components/Navigation/container";
 import AddScheduleDialog from "./components/AddScheduleDialog/container";
 import CurrentScheduleDialog from "./components/CurrentScheduleDialog/container";
+import { applyMiddleware } from "redux";
+import thunk from "redux-thunk"
 
 
 dayjs.locale("ja")
 
-const store = createStore(rootReducer)
-
+const store = createStore(rootReducer, applyMiddleware(thunk))
 const App = () => (
   <Provider store={store}>
     <MuiPickersUtilsProvider utils={DayjsUtils}>

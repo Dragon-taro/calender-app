@@ -28,8 +28,6 @@ export const isFirstDay = day=>day.date()===1
 export const createCalendar = month => {
   const firstDay = getMonth(month)
   const firstDayIndex = firstDay.day()
-  console.log(firstDay)
-  console.log(firstDayIndex)
 
   return Array(35)
     .fill(0)
