@@ -1,5 +1,5 @@
-import { get, post } from "../../services/api"
-import { schedulesAddItem, schedulesFetchItem, schedulesSetLoading } from "./actions"
+import { deleteRequest, get, post } from "../../services/api"
+import { schedulesAddItem, schedulesDeleteItem, schedulesFetchItem, schedulesSetLoading } from "./actions"
 import { formatSchedule } from "../../services/schedule"
 
 export const asyncSchedulesFetchItem = ({ month, year }) => async dispatch => {
@@ -21,4 +21,15 @@ export const asyncSchedulesAddItem = schedule => async dispatch => {
 
   const newSchedule = formatSchedule(result)
   dispatch(schedulesAddItem(newSchedule))
+}
+
+export const asyncSchedulesDeleteItem = id => async (dispatch, getState) => {
+  dispatch(schedulesSetLoading())
+  const currentSchedules = getState().schedules.items
+
+  await deleteRequest(`schedules/${id}`)
+
+  // 成功したらローカルのstateを削除 filter
+  const newSchedules = currentSchedules.filter(s => s.id !== id)
+  dispatch(schedulesDeleteItem(newSchedules))
 }
