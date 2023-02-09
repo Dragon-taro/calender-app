@@ -7,8 +7,8 @@ export const asyncSchedulesFetchItem = ({ month, year }) => async dispatch => {
 
   try {
 
-    const result = await get(`schedules`)
-    // const result = await get(`schedules?month=${month}&year=${year}`)
+    // const result = await get(`schedules`)
+    const result = await get(`schedules?month=${month}&year=${year}`)
 
     const formatedSchedule = result.map(r => formatSchedule(r))
 
@@ -30,7 +30,7 @@ export const asyncSchedulesAddItem = schedule => async dispatch => {
     const newSchedule = formatSchedule(result)
     dispatch(schedulesAddItem(newSchedule))
   } catch (err) {
-    console.error(err)
+    // console.error(err)
     dispatch(schedulesAsyncFailure(err.message))
   }
 }
