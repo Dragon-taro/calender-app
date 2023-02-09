@@ -1,6 +1,14 @@
 import dayjs from "dayjs";
 import { isSameDay } from "./calendar";
 
+export const isCloseDialog = schedule => {
+  const message = "保存されていない変更を破棄しますか"
+  return isScheduleEmpty(schedule) || window.confirm(message)
+}
+
+const isScheduleEmpty = schedule =>
+  !schedule.title && !schedule.description && !schedule.location
+
 export const setSchedules = (calendar, schedules) =>
   calendar.map(c => ({
     date: c,
