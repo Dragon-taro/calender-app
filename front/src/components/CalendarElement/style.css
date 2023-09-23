@@ -1,0 +1,21 @@
+.element {
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  height: 18vh;
+}
+.date {
+  padding: 5px 0;
+  height: 24px;
+}
+.today {
+  display: inline-block;
+  line-height: 24px;
+  width: 24px;
+  background-color: #1a73e8;
+  color: #fff;
+  border-radius: 50%;
+}
+.schedules {
+  overflow: scroll;
+  height: calc(18vh - 40px);
+}
